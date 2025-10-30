@@ -14,6 +14,12 @@ const config = {
         destination: "https://posh.vip/f/f1c5?t=eleos",
         permanent: true,
       },
+      // Haunted House Tickets
+      {
+        source: "/haunted-house",
+        destination: "https://posh.vip/e/haunted-house-8?t=eleos",
+        permanent: true,
+      },
     ];
   },
 };

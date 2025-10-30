@@ -12,7 +12,7 @@ const meta = {
   instagram: "https://www.instagram.com/eleos_events/",
   tikTok: "https://www.tiktok.com/@eleos_events_ofc",
   youTube: "https://www.youtube.com/@eleos_events",
-  grooveGarden: "/groove-garden",
+  hauntedHouse: "/haunted-house",
   soundCloudMixes: "/soundcloud-mixes",
 };
 
@@ -29,9 +29,9 @@ export default function HomePage() {
           />
         </Link>
         <div className="flex w-full flex-col items-center space-y-4 px-4">
-          <Link href={meta.grooveGarden} className="w-full">
+          <Link href={meta.hauntedHouse} className="w-full">
             <Button
-              title="Groove Garden Tickets"
+              title="Haunted House Tickets"
               className={buttonVariants({
                 variant: "outline",
                 size: "lg",
@@ -39,7 +39,7 @@ export default function HomePage() {
               })}
             >
               <TicketIcon />
-              <span className="ml-2">Groove Garden Tickets</span>
+              <span className="ml-2">Haunted House Tickets</span>
             </Button>
           </Link>
           <Link href={meta.instagram} className="w-full">
