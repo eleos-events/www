@@ -10,11 +10,9 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/events", label: "Events" },
   { href: "/about", label: "About" },
-  { href: "/artists", label: "Artists" },
+  // { href: "/artists", label: "Artists" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/store", label: "Store" },
-  { href: "/vip", label: "VIP" },
-  { href: "/blog", label: "Blog" },
+  // { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -83,4 +81,3 @@ export function Navigation() {
     </nav>
   );
 }
-
