@@ -1,26 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { copy } from "@/lib/copy";
+import { galleryImages } from "@/lib/gallery-data";
 
-const galleryImages = [
-  { id: 1, event: "Groove Garden", category: "all", image: "/next.svg" },
-  { id: 2, event: "Groove Garden", category: "all", image: "/next.svg" },
-  { id: 3, event: "Haunted House", category: "all", image: "/next.svg" },
-  { id: 4, event: "Haunted House", category: "all", image: "/next.svg" },
-  { id: 5, event: "Groove Garden", category: "all", image: "/next.svg" },
-  { id: 6, event: "Haunted House", category: "all", image: "/next.svg" },
-  { id: 7, event: "Groove Garden", category: "all", image: "/next.svg" },
-  { id: 8, event: "Haunted House", category: "all", image: "/next.svg" },
-];
-
-const events = ["all", "Groove Garden", "Haunted House"];
+const events = ["All", ...Array.from(new Set(galleryImages.map((img) => img.event)))];
 
 export default function GalleryPage() {
-  const [selectedEvent, setSelectedEvent] = useState("all");
+  const [selectedEvent, setSelectedEvent] = useState("All");
 
   const filteredImages =
-    selectedEvent === "all"
+    selectedEvent === "All"
       ? galleryImages
       : galleryImages.filter((img) => img.event === selectedEvent);
 
@@ -69,15 +60,28 @@ export default function GalleryPage() {
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
             {filteredImages.map((item, index) => (
               <div
-                key={item.id}
-                className="group relative mb-4 break-inside-avoid rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm aspect-square flex items-center justify-center cursor-pointer transition-[border-color,background-color,transform] duration-300 hover:border-white/[0.12] hover:bg-white/[0.04] hover:scale-[1.02] animate-fade-in-up overflow-hidden"
+                key={item.src}
+                className="group relative mb-4 break-inside-avoid rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden transition-[border-color,background-color,transform] duration-300 hover:border-white/[0.12] hover:bg-white/[0.04] hover:scale-[1.02] animate-fade-in-up"
                 style={{ animationDelay: `${Math.min(index * 80, 300)}ms` }}
               >
                 {/* Gradient glow on hover */}
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-15" />
-                <span className="relative text-sm font-medium uppercase tracking-wide text-[#555] transition-colors duration-300 group-hover:text-[#999]">
-                  {item.event}
-                </span>
+                <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-15 z-10" />
+                <Image
+                  src={item.src}
+                  alt={`${item.event} event photo`}
+                  width={item.width}
+                  height={item.height}
+                  placeholder="blur"
+                  blurDataURL={item.blurDataURL}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="relative w-full h-auto"
+                />
+                {/* Event label */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10">
+                  <span className="text-xs font-medium uppercase tracking-wider text-white/90">
+                    {item.event}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

@@ -21,7 +21,7 @@ export function Hero({
   return (
     <section className="relative h-[calc(100vh-4rem)] flex items-center">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/splash.jpg')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-[url('/images/splash.jpg')] bg-cover bg-center bg-no-repeat" />
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/30 to-black" />
       </div>
 

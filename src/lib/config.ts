@@ -19,7 +19,7 @@ export const config = {
       url: copy.brand.url,
       images: [
         {
-          url: "/og-image.jpg",
+          url: "/images/og-image.jpg",
           width: 1200,
           height: 630,
           alt: `${copy.brand.name} — Bespoke Live Music Events in Boston`,
@@ -30,7 +30,7 @@ export const config = {
       card: "summary_large_image",
       title: copy.brand.name,
       description: copy.brand.tagline,
-      images: ["/twitter-image.jpg"],
+      images: ["/images/twitter-image.jpg"],
     },
   } satisfies Metadata,
   hero: {
@@ -50,7 +50,7 @@ export const config = {
     {
       key: "groove-garden",
       title: "Groove Garden",
-      imageUrl: "/event-posters/groove-garden.png",
+      imageUrl: "/images/event-posters/groove-garden.png",
       date: dayjs("2024-08-02"),
       location: "Cambridge, MA",
       action: {
@@ -62,7 +62,7 @@ export const config = {
     {
       key: "haunted-house",
       title: "Haunted House",
-      imageUrl: "/event-posters/haunted-house.png",
+      imageUrl: "/images/event-posters/haunted-house.png",
       date: dayjs("2025-11-01"),
       location: "Cambridge, MA",
       action: {

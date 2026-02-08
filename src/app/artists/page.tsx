@@ -9,28 +9,24 @@ const artists = [
     name: "DJ Name One",
     genre: "Tech House",
     platform: "SoundCloud",
-    image: "/next.svg",
   },
   {
     id: 2,
     name: "DJ Name Two",
     genre: "Deep House",
     platform: "Spotify",
-    image: "/next.svg",
   },
   {
     id: 3,
     name: "DJ Name Three",
     genre: "EDM",
     platform: "SoundCloud",
-    image: "/next.svg",
   },
   {
     id: 4,
     name: "DJ Name Four",
     genre: "Techno",
     platform: "Spotify",
-    image: "/next.svg",
   },
 ];
 

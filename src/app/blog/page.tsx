@@ -13,7 +13,6 @@ const blogPosts = [
     category: "recap",
     date: "2024-08-20",
     excerpt: "Our latest event brought together the best local talent for an unforgettable night of tech house.",
-    image: "/next.svg",
   },
   {
     id: 2,
@@ -21,7 +20,6 @@ const blogPosts = [
     category: "announcement",
     date: "2024-09-15",
     excerpt: "Get ready for our Halloween special featuring spooky beats and haunting melodies.",
-    image: "/next.svg",
   },
   {
     id: 3,
@@ -29,7 +27,6 @@ const blogPosts = [
     category: "interview",
     date: "2024-08-10",
     excerpt: "We sat down with one of our featured artists to discuss their journey and sound.",
-    image: "/next.svg",
   },
   {
     id: 4,
@@ -37,7 +34,6 @@ const blogPosts = [
     category: "insights",
     date: "2024-07-25",
     excerpt: "Exploring the vibrant electronic music community in Boston and its growing influence.",
-    image: "/next.svg",
   },
 ];
 
