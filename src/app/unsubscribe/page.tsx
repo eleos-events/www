@@ -8,18 +8,23 @@ import { copy } from "@/lib/copy";
 
 function UnsubscribeContent() {
   const searchParams = useSearchParams();
+  const id = searchParams.get("id");
   const email = searchParams.get("email");
   const [status, setStatus] = useState<"loading" | "success" | "error">(
     "loading"
   );
 
   useEffect(() => {
-    if (!email) {
+    if (!id && !email) {
       setStatus("error");
       return;
     }
 
-    fetch(`/api/newsletter/unsubscribe?email=${encodeURIComponent(email)}`)
+    const params = id
+      ? `id=${encodeURIComponent(id)}`
+      : `email=${encodeURIComponent(email!)}`;
+
+    fetch(`/api/newsletter/unsubscribe?${params}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.success ? "success" : "error");
@@ -27,7 +32,7 @@ function UnsubscribeContent() {
       .catch(() => {
         setStatus("error");
       });
-  }, [email]);
+  }, [id, email]);
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">

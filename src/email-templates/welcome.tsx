@@ -14,12 +14,12 @@ import {
 
 interface WelcomeEmailProps {
   name: string;
-  email: string;
+  contactId: string;
   baseUrl: string;
 }
 
-export function WelcomeEmail({ name, email, baseUrl }: WelcomeEmailProps) {
-  const unsubscribeUrl = `${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}`;
+export function WelcomeEmail({ name, contactId, baseUrl }: WelcomeEmailProps) {
+  const unsubscribeUrl = `${baseUrl}/unsubscribe?id=${encodeURIComponent(contactId)}`;
 
   return (
     <Html lang="en" dir="ltr">

@@ -30,16 +30,21 @@ export async function POST(request: NextRequest) {
       return internalServerError("Newsletter service is unavailable.");
     }
 
-    const existingContact = await getContactByEmail(email);
+    console.log("Creating contact for email:", email);
+    let contact = await getContactByEmail(email);
 
-    if (!existingContact) {
-      const contact = await createContact(email, name, audienceId);
+    if (!contact) {
+      console.log("Contact not found, creating contact");
+      contact = await createContact(email, name, audienceId);
+
+      console.log("Sending welcome email to contact:", contact.email);
       await sendWelcomeEmail(request.nextUrl.origin, contact);
     }
 
-    if (existingContact.unsubscribed) {
+    if (contact.unsubscribed) {
+      console.log("Contact is unsubscribed, updating contact");
       await resend.contacts.update({
-        id: existingContact.id,
+        id: contact.id,
         audienceId: audienceId,
         unsubscribed: false,
       });
@@ -47,6 +52,7 @@ export async function POST(request: NextRequest) {
 
     return ok();
   } catch (error) {
+    console.error("Error subscribing to newsletter:", error);
     return internalServerError("An unexpected error occurred: " + error);
   }
 }

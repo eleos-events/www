@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# eleos events — www
+
+Marketing website for eleos events, a Boston-based bespoke live music events company.
+
+Built with Next.js 16 (App Router), React 19, and Tailwind CSS 4.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 with App Router
+- **UI:** React 19, Tailwind CSS 4, Radix UI primitives
+- **Email:** Resend + React Email
+- **Icons:** Lucide React
+- **Carousel:** Embla Carousel
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/                  # Next.js App Router pages
+    about/              # About page
+    artists/            # Artists listing
+    blog/               # Blog with category filters
+    contact/            # Contact form
+    events/             # Upcoming events
+    gallery/            # Photo gallery with event filters
+    privacy/            # Privacy policy
+    terms/              # Terms & conditions
+    unsubscribe/        # Newsletter unsubscribe
+    api/newsletter/     # Newsletter signup & unsubscribe API
+  components/
+    app/                # Domain components (hero, event list, etc.)
+    ui/                 # Reusable UI primitives (button, card, input, etc.)
+  lib/
+    copy.ts             # Centralised site copy (CMS-ready)
+    config.ts           # SEO metadata, hero config, event data
+    gallery-data.ts     # Gallery image manifest with blur placeholders
+    utils.ts            # Shared utilities
+public/
+  images/
+    event-posters/      # Event poster artwork
+    events/             # Optimised event photos (WebP)
+    og-image.jpg        # OpenGraph social image
+    twitter-image.jpg   # Twitter card image
+    splash.jpg          # Hero background
+```
 
-## Learn More
+## Site Copy
 
-To learn more about Next.js, take a look at the following resources:
+All user-facing strings are centralised in `src/lib/copy.ts` behind a typed `SiteCopy` interface. This makes it straightforward to swap in a headless CMS (Sanity, Contentful, etc.) without touching component code.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start dev server         |
+| `npm run build` | Production build         |
+| `npm start`     | Serve production build   |
+| `npm run lint`  | Run ESLint               |
