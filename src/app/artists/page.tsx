@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { copy } from "@/lib/copy";
 
 const artists = [
   {
@@ -38,11 +39,10 @@ export default function ArtistsPage() {
     <div className="min-h-screen bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <h1 className="text-5xl md:text-6xl font-black uppercase mb-12 text-center">
-          Local Talent
+          {copy.artists.hero.title}
         </h1>
         <p className="text-center text-lg text-[#a0a0a0] mb-12 max-w-2xl mx-auto">
-          Discover the talented DJs and performers who bring our events to life. 
-          Each artist brings their unique sound and energy to create unforgettable experiences.
+          {copy.artists.hero.description}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -61,7 +61,7 @@ export default function ArtistsPage() {
               </CardHeader>
               <CardContent>
                 <Button asChild variant="outline" className="w-full">
-                  <Link href={`/artists/${artist.id}`}>Listen</Link>
+                  <Link href={`/artists/${artist.id}`}>{copy.artists.cta}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -71,4 +71,3 @@ export default function ArtistsPage() {
     </div>
   );
 }
-

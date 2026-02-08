@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { copy } from "@/lib/copy";
 
 const galleryImages = [
   { id: 1, event: "Groove Garden", category: "all", image: "/next.svg" },
@@ -33,10 +34,10 @@ export default function GalleryPage() {
         </div>
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff] animate-fade-in-up">
-            Captured moments
+            {copy.gallery.hero.eyebrow}
           </p>
           <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent mb-8 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-            Gallery
+            {copy.gallery.hero.title}
           </h1>
 
           {/* Filter Buttons */}

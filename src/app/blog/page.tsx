@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { copy } from "@/lib/copy";
 
 const blogPosts = [
   {
@@ -53,7 +54,7 @@ export default function BlogPage() {
     <div className="min-h-screen bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <h1 className="text-5xl md:text-6xl font-black uppercase mb-12 text-center">
-          News & Blog
+          {copy.blog.title}
         </h1>
 
         {/* Filter Buttons */}
@@ -96,7 +97,7 @@ export default function BlogPage() {
               </CardHeader>
               <CardContent>
                 <Button asChild variant="outline" className="w-full">
-                  <Link href={`/blog/${post.id}`}>Read More</Link>
+                  <Link href={`/blog/${post.id}`}>{copy.blog.cta}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -106,4 +107,3 @@ export default function BlogPage() {
     </div>
   );
 }
-

@@ -1,64 +1,60 @@
 import Link from "next/link";
 import { Instagram, Youtube, ArrowUpRight } from "lucide-react";
 import type { ComponentType } from "react";
+import { copy } from "@/lib/copy";
 
-interface Social {
-  name: string;
-  handle: string;
-  href: string;
+interface SocialPresentation {
   icon: ComponentType<{ className?: string }>;
   gradient: string;
   ring: string;
   internal?: boolean;
 }
 
-const socials: Social[] = [
-  {
-    name: "Instagram",
-    handle: "@eleos_events",
-    href: "https://www.instagram.com/eleos_events/",
+/** Map social platform names to their presentation (icon, gradient, ring). */
+const socialPresentation: Record<string, SocialPresentation> = {
+  Instagram: {
     icon: Instagram,
     gradient: "from-amber-500 via-pink-500 to-purple-600",
     ring: "group-hover:ring-pink-500/30",
   },
-  {
-    name: "TikTok",
-    handle: "@eleos_events_ofc",
-    href: "https://www.tiktok.com/@eleos_events_ofc",
+  TikTok: {
     icon: TikTokIcon,
     gradient: "from-cyan-400 via-white to-pink-500",
     ring: "group-hover:ring-cyan-400/30",
   },
-  {
-    name: "YouTube",
-    handle: "@eleos_events",
-    href: "https://www.youtube.com/@eleos_events",
+  YouTube: {
     icon: Youtube,
     gradient: "from-red-500 to-red-700",
     ring: "group-hover:ring-red-500/30",
   },
-  {
-    name: "SoundCloud",
-    handle: "Mixes & Sets",
-    href: "https://on.soundcloud.com/7Uzed1qsUASOLBeIg9",
+  SoundCloud: {
     icon: SoundCloudIcon,
     gradient: "from-orange-400 to-orange-600",
     ring: "group-hover:ring-orange-500/30",
   },
-];
+};
 
-function SocialCard({ social, index }: { social: Social; index: number }) {
-  const Icon = social.icon;
+function SocialCard({
+  social,
+  index,
+}: {
+  social: (typeof copy.contact.socials)[number];
+  index: number;
+}) {
+  const presentation = socialPresentation[social.name];
+  if (!presentation) return null;
+
+  const Icon = presentation.icon;
 
   const inner = (
     <>
       {/* Gradient border glow on hover */}
       <div
-        className={`absolute -inset-px rounded-2xl bg-gradient-to-r ${social.gradient} opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20`}
+        className={`absolute -inset-px rounded-2xl bg-gradient-to-r ${presentation.gradient} opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20`}
       />
       <div className="relative flex w-full items-center gap-5">
         <div
-          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${social.gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
+          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${presentation.gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
         >
           <Icon className="h-7 w-7 text-white drop-shadow" />
         </div>
@@ -75,13 +71,13 @@ function SocialCard({ social, index }: { social: Social; index: number }) {
     </>
   );
 
-  const className = `group relative flex items-center rounded-2xl border border-white/[0.06] bg-white/[0.02] px-6 py-5 ring-1 ring-transparent transition-[border-color,background-color,ring-color] duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] ${social.ring}`;
+  const className = `group relative flex items-center rounded-2xl border border-white/[0.06] bg-white/[0.02] px-6 py-5 ring-1 ring-transparent transition-[border-color,background-color,ring-color] duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] ${presentation.ring}`;
 
   const style = {
     animationDelay: `${index * 100}ms`,
   };
 
-  if (social.internal) {
+  if (presentation.internal) {
     return (
       <Link
         href={social.href}
@@ -120,17 +116,15 @@ export default function ContactPage() {
         <div className="mx-auto max-w-md">
           <div className="mb-16 text-center">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
-              Find us everywhere
+              {copy.contact.hero.eyebrow}
             </p>
-            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-              Let&apos;s
-              <br />
-              Connect
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent whitespace-pre-line">
+              {copy.contact.hero.title}
             </h1>
           </div>
 
           <div className="grid grid-cols-1 gap-3">
-            {socials.map((social, i) => (
+            {copy.contact.socials.map((social, i) => (
               <SocialCard key={social.name} social={social} index={i} />
             ))}
           </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { EventList } from "@/components/app/event-list";
 import { config } from "@/lib/config";
+import { copy } from "@/lib/copy";
 import dayjs from "dayjs";
 
 const hasUpcomingEvents = config.events.some((event) =>
@@ -21,15 +22,15 @@ export default function EventsPage() {
             </div>
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
               <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff] animate-fade-in-up">
-                Our experiences
+                {copy.events.hero.eyebrow}
               </p>
               <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-                Events
+                {copy.events.hero.title}
               </h1>
             </div>
           </section>
           <EventList
-            title="Upcoming Events"
+            title={copy.events.upcoming.title}
             titleAlignment="left"
             showViewAllEvents={false}
             showPastEvents={false}
@@ -45,21 +46,20 @@ export default function EventsPage() {
           </div>
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff] animate-fade-in-up">
-              Our experiences
+              {copy.events.hero.eyebrow}
             </p>
             <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent mb-6 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-              Events
+              {copy.events.hero.title}
             </h1>
             <div className="max-w-xl animate-fade-in-up" style={{ animationDelay: "200ms" }}>
               <p className="text-lg text-[#a0a0a0] mb-6">
-                Our curators are finalizing the next set of one-off experiences.
-                Sign up to be the first to know when tickets drop.
+                {copy.events.empty.description}
               </p>
               <Link
                 href="/#newsletter"
                 className="inline-flex items-center gap-2 text-[#00d4ff] font-medium transition-colors duration-300 hover:text-white"
               >
-                Get notified
+                {copy.events.empty.cta}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -68,8 +68,8 @@ export default function EventsPage() {
       )}
 
       <EventList
-        title="Past Events"
-        eyebrow="Looking back"
+        title={copy.events.past.title}
+        eyebrow={copy.events.past.eyebrow}
         titleAlignment="left"
         showViewAllEvents={false}
         showPastEvents={true}

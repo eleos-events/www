@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { Suspense } from "react";
+import { copy } from "@/lib/copy";
 
 function UnsubscribeContent() {
   const searchParams = useSearchParams();
@@ -34,18 +35,17 @@ function UnsubscribeContent() {
         {status === "loading" && (
           <>
             <Loader2 className="h-8 w-8 animate-spin text-teal-400 mx-auto mb-4" />
-            <p className="text-[#a0a0a0]">Processing your request...</p>
+            <p className="text-[#a0a0a0]">{copy.unsubscribe.loading}</p>
           </>
         )}
 
         {status === "success" && (
           <>
             <h1 className="text-2xl font-bold uppercase tracking-wide mb-4">
-              Unsubscribed
+              {copy.unsubscribe.success.title}
             </h1>
             <p className="text-[#a0a0a0]">
-              You&apos;ve been removed from our mailing list. You won&apos;t
-              receive any more emails from us.
+              {copy.unsubscribe.success.description}
             </p>
           </>
         )}
@@ -53,11 +53,10 @@ function UnsubscribeContent() {
         {status === "error" && (
           <>
             <h1 className="text-2xl font-bold uppercase tracking-wide mb-4">
-              Something went wrong
+              {copy.unsubscribe.error.title}
             </h1>
             <p className="text-[#a0a0a0]">
-              We couldn&apos;t process your unsubscribe request. Please try
-              again or contact us directly.
+              {copy.unsubscribe.error.description}
             </p>
           </>
         )}

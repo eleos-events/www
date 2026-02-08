@@ -16,6 +16,7 @@ import Image from "next/image";
 import { Empty } from "@/components/ui/empty";
 import useEmblaCarousel from "embla-carousel-react";
 import { config } from "@/lib/config";
+import { copy } from "@/lib/copy";
 import { cn } from "@/lib/utils";
 
 export type EventProps = {
@@ -82,7 +83,8 @@ export function EventList({
   showViewAllEvents = true,
   showPastEvents = false,
 }: EventListProps) {
-  const eyebrowText = eyebrow ?? (showPastEvents ? "Looking back" : "What's next");
+  const eyebrowText =
+    eyebrow ?? (showPastEvents ? copy.eventList.eyebrow.past : copy.eventList.eyebrow.upcoming);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -143,8 +145,8 @@ export function EventList({
           </div>
           <div className="text-center">
             <Empty
-              title="More magic on the way"
-              description="Our curators are finalizing the next set of one-off experiences. Join the newsletter to be the first to know."
+              title={copy.eventList.empty.title}
+              description={copy.eventList.empty.description}
               notifyHref="#newsletter"
             />
           </div>
@@ -235,7 +237,7 @@ export function EventList({
         </div>
         {showViewAllEvents && filteredEvents.length > 0 && (
           <div className="text-center mt-12">
-            <Action type="link" href="/events" label="View All Events" />
+            <Action type="link" href="/events" label={copy.eventList.viewAllLabel} />
           </div>
         )}
       </div>
