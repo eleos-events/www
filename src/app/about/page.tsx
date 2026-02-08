@@ -126,7 +126,7 @@ export default function AboutPage() {
               return (
                 <div
                   key={pillar.title}
-                  className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm px-6 py-8 transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] animate-fade-in-up"
+                  className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm px-6 py-8 transition-[border-color,background-color] duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] animate-fade-in-up"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {/* Gradient glow on hover */}
@@ -135,7 +135,7 @@ export default function AboutPage() {
                   />
                   <div className="relative">
                     <div
-                      className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
+                      className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
                     >
                       <Icon className="h-7 w-7 text-white" />
                     </div>
@@ -172,14 +172,14 @@ export default function AboutPage() {
               return (
                 <div
                   key={item.title}
-                  className="group relative flex items-start gap-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm px-6 py-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] animate-fade-in-up"
+                  className="group relative flex items-start gap-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm px-6 py-5 transition-[border-color,background-color] duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] animate-fade-in-up"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div
                     className={`absolute -inset-px rounded-2xl bg-gradient-to-r ${item.gradient} opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20`}
                   />
                   <div
-                    className={`relative mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
+                    className={`relative mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
                   >
                     <Icon className="h-6 w-6 text-white" />
                   </div>

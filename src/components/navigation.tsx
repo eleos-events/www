@@ -54,19 +54,19 @@ export function Navigation() {
               <div className="relative h-5 w-6">
                 <span
                   className={cn(
-                    "absolute left-0 h-[2px] w-6 bg-white transition-all duration-300",
+                    "absolute left-0 h-[2px] w-6 bg-white transition-[top,transform] duration-300",
                     mobileMenuOpen ? "top-[9px] rotate-45" : "top-0"
                   )}
                 />
                 <span
                   className={cn(
-                    "absolute left-0 top-[9px] h-[2px] w-6 bg-white transition-all duration-300",
+                    "absolute left-0 top-[9px] h-[2px] w-6 bg-white transition-[transform,opacity] duration-300",
                     mobileMenuOpen ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"
                   )}
                 />
                 <span
                   className={cn(
-                    "absolute left-0 h-[2px] w-6 bg-white transition-all duration-300",
+                    "absolute left-0 h-[2px] w-6 bg-white transition-[top,transform] duration-300",
                     mobileMenuOpen ? "top-[9px] -rotate-45" : "top-[18px]"
                   )}
                 />

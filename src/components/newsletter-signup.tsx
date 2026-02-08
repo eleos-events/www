@@ -203,7 +203,7 @@ export function NewsletterSignup() {
             <Button
               type="submit"
               size="lg"
-              className="w-full md:w-auto min-w-[220px] transition-all hover:scale-105 active:scale-95"
+              className="w-full md:w-auto min-w-[220px] transition-transform hover:scale-105 active:scale-95"
               disabled={!consent || isLoading || subscribed}
             >
               {isLoading ? (

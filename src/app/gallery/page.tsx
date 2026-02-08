@@ -45,7 +45,7 @@ export default function GalleryPage() {
               <button
                 key={event}
                 onClick={() => setSelectedEvent(event)}
-                className={`rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-300 ${
+                className={`rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition-[border-color,background-color,color] duration-300 ${
                   selectedEvent === event
                     ? "bg-white/[0.1] text-white border border-white/[0.15]"
                     : "bg-white/[0.02] text-[#707070] border border-white/[0.06] hover:bg-white/[0.04] hover:text-[#a0a0a0] hover:border-white/[0.1]"
@@ -69,8 +69,8 @@ export default function GalleryPage() {
             {filteredImages.map((item, index) => (
               <div
                 key={item.id}
-                className="group relative mb-4 break-inside-avoid rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm aspect-square flex items-center justify-center cursor-pointer transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04] hover:scale-[1.02] animate-fade-in-up overflow-hidden"
-                style={{ animationDelay: `${index * 80}ms` }}
+                className="group relative mb-4 break-inside-avoid rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm aspect-square flex items-center justify-center cursor-pointer transition-[border-color,background-color,transform] duration-300 hover:border-white/[0.12] hover:bg-white/[0.04] hover:scale-[1.02] animate-fade-in-up overflow-hidden"
+                style={{ animationDelay: `${Math.min(index * 80, 300)}ms` }}
               >
                 {/* Gradient glow on hover */}
                 <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-15" />
