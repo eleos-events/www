@@ -9,11 +9,30 @@ export const config = {
     title: "elëos events",
     description:
       "Boston-based bespoke events company producing one-off live-music parties that showcase local talent. High-quality, highly produced experiences at relatively low cost.",
+    metadataBase: new URL("https://eleos.events"),
     openGraph: {
+      type: "website",
+      locale: "en_US",
+      siteName: "elëos events",
       title: "elëos events",
       description:
         "Boston-based bespoke events company producing one-off live-music parties that showcase local talent. High-quality, highly produced experiences at relatively low cost.",
-      images: [{ url: "/splash.png" }],
+      url: "https://eleos.events",
+      images: [
+        {
+          url: "/splash.png",
+          width: 1200,
+          height: 630,
+          alt: "elëos events — Bespoke Live Music Events in Boston",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "elëos events",
+      description:
+        "Boston-based bespoke events company producing one-off live-music parties that showcase local talent.",
+      images: ["/splash.png"],
     },
   } satisfies Metadata,
   hero: {

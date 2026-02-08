@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Archivo_Black, Inter } from "next/font/google";
 import "@fontsource/aileron/400.css";
 import "@fontsource/aileron/700.css";
@@ -21,12 +20,9 @@ const inter = Inter({
 
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { config } from "@/lib/config";
 
-export const metadata: Metadata = {
-  title: "elëos events | Bespoke Live Music Events in Boston",
-  description:
-    "Boston-based bespoke events company producing one-off live-music parties that showcase local talent. High-quality, highly produced experiences at relatively low cost.",
-};
+export const metadata = config.seo;
 
 export default function RootLayout({
   children,
