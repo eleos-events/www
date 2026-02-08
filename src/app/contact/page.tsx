@@ -40,11 +40,10 @@ const socials: Social[] = [
   {
     name: "SoundCloud",
     handle: "Mixes & Sets",
-    href: "/soundcloud-mixes",
+    href: "https://on.soundcloud.com/7Uzed1qsUASOLBeIg9",
     icon: SoundCloudIcon,
     gradient: "from-orange-400 to-orange-600",
     ring: "group-hover:ring-orange-500/30",
-    internal: true,
   },
 ];
 
@@ -59,7 +58,7 @@ function SocialCard({ social, index }: { social: Social; index: number }) {
       />
       <div className="relative flex w-full items-center gap-5">
         <div
-          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${social.gradient} shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
+          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${social.gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
         >
           <Icon className="h-7 w-7 text-white drop-shadow" />
         </div>
@@ -71,12 +70,12 @@ function SocialCard({ social, index }: { social: Social; index: number }) {
             {social.handle}
           </p>
         </div>
-        <ArrowUpRight className="ml-auto h-5 w-5 text-[#333] transition-all duration-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <ArrowUpRight className="ml-auto h-5 w-5 text-[#333] transition-[color,transform] duration-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </div>
     </>
   );
 
-  const className = `group relative flex items-center rounded-2xl border border-white/[0.06] bg-white/[0.02] px-6 py-5 ring-1 ring-transparent transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] ${social.ring}`;
+  const className = `group relative flex items-center rounded-2xl border border-white/[0.06] bg-white/[0.02] px-6 py-5 ring-1 ring-transparent transition-[border-color,background-color,ring-color] duration-300 hover:border-white/[0.1] hover:bg-white/[0.04] ${social.ring}`;
 
   const style = {
     animationDelay: `${index * 100}ms`,

@@ -220,7 +220,7 @@ export function EventList({
                   <button
                     key={index}
                     className={cn(
-                      "h-2 rounded-full transition-all duration-300",
+                      "h-2 rounded-full transition-[width,background-color] duration-300",
                       selectedIndex === index
                         ? "w-6 bg-[#00d4ff]"
                         : "w-2 bg-white/20"
