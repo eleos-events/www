@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,7 +28,7 @@ export type EventProps = {
 
 export function Event({ title, imageUrl, date, location, action }: EventProps) {
   return (
-    <Card className="overflow-hidden hover:border-[#00d4ff] transition-all duration-300 hover:shadow-lg hover:shadow-[#00d4ff]/20 group">
+    <Card className="overflow-hidden hover:border-white/[0.12] hover:bg-white/[0.04] hover:shadow-lg hover:shadow-[#00d4ff]/10 group">
       <div className="relative aspect-[3/4] bg-black overflow-hidden">
         {/* Blurred background fill */}
         <div className="absolute inset-0">
@@ -68,6 +69,7 @@ export function Event({ title, imageUrl, date, location, action }: EventProps) {
 
 export type EventListProps = {
   title: string;
+  eyebrow?: string;
   titleAlignment?: "left" | "center";
   showViewAllEvents?: boolean;
   showPastEvents?: boolean;
@@ -75,11 +77,26 @@ export type EventListProps = {
 
 export function EventList({
   title,
+  eyebrow,
   titleAlignment = "center",
   showViewAllEvents = true,
   showPastEvents = false,
 }: EventListProps) {
+  const eyebrowText = eyebrow ?? (showPastEvents ? "Looking back" : "What's next");
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi, onSelect]);
 
   const scrollPrev = () => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -97,46 +114,82 @@ export function EventList({
 
   if (filteredEvents.length === 0) {
     return (
-      <section className="py-24 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className={cn(
-              "text-4xl md:text-5xl font-bold uppercase mb-12 tracking-wide",
-              titleAlignment === "left" && "text-left",
-              titleAlignment === "center" && "text-center"
-            )}
-          >
-            {title}
-          </h2>
-          <Empty
-            title="More magic on the way"
-            description="Our curators are finalizing the next set of one-off experiences. Join the newsletter to be the first to know."
-            notifyHref="#newsletter"
-          />
+      <section className="relative py-24 bg-black overflow-hidden">
+        {/* Ambient background blobs */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
+          <div className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
+        </div>
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={cn(titleAlignment === "center" && "text-center")}>
+            <p
+              className={cn(
+                "mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]",
+                titleAlignment === "left" && "text-left"
+              )}
+            >
+              {eyebrowText}
+            </p>
+            <h2
+              className={cn(
+                "text-4xl md:text-5xl font-black uppercase mb-12 tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent",
+                titleAlignment === "left" && "text-left",
+                titleAlignment === "center" && "text-center"
+              )}
+            >
+              {title}
+            </h2>
+          </div>
+          <div className="text-center">
+            <Empty
+              title="More magic on the way"
+              description="Our curators are finalizing the next set of one-off experiences. Join the newsletter to be the first to know."
+              notifyHref="#newsletter"
+            />
+          </div>
         </div>
       </section>
     );
   }
 
   return (
-    <section className="py-24 bg-[#0a0a0a]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2
-          className={cn(
-            "text-4xl md:text-5xl font-bold uppercase mb-12 tracking-wide",
-            titleAlignment === "left" && "text-left",
-            titleAlignment === "center" && "text-center"
-          )}
-        >
-          {title}
-        </h2>
+    <section className="relative py-24 bg-black overflow-hidden">
+      {/* Ambient background blobs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
+        <div className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
+        <div className="absolute left-1/2 bottom-0 h-[400px] w-[400px] rounded-full bg-pink-500/[0.03] blur-[150px]" />
+      </div>
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={cn(titleAlignment === "center" && "text-center")}>
+          <p
+            className={cn(
+              "mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]",
+              titleAlignment === "left" && "text-left"
+            )}
+          >
+            {eyebrowText}
+          </p>
+          <h2
+            className={cn(
+              "text-4xl md:text-5xl font-black uppercase mb-12 tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent",
+              titleAlignment === "left" && "text-left",
+              titleAlignment === "center" && "text-center"
+            )}
+          >
+            {title}
+          </h2>
+        </div>
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-6">
-              {filteredEvents.map(({ key, ...event }) => (
+              {filteredEvents.map(({ key, ...event }, index) => (
                 <div
                   key={key}
-                  className="flex-[0_0_100%] md:flex-[0_0_calc(50%-0.75rem)] lg:flex-[0_0_calc(33.333%-1rem)] min-w-0"
+                  className="flex-[0_0_100%] md:flex-[0_0_calc(50%-0.75rem)] lg:flex-[0_0_calc(33.333%-1rem)] min-w-0 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <Event {...event} />
                 </div>
@@ -161,6 +214,22 @@ export function EventList({
               >
                 <ChevronRight className="h-6 w-6" />
               </Button>
+              {/* Mobile pagination dots */}
+              <div className="flex justify-center gap-2 mt-6 lg:hidden">
+                {filteredEvents.map((_, index) => (
+                  <button
+                    key={index}
+                    className={cn(
+                      "h-2 rounded-full transition-all duration-300",
+                      selectedIndex === index
+                        ? "w-6 bg-[#00d4ff]"
+                        : "w-2 bg-white/20"
+                    )}
+                    onClick={() => emblaApi?.scrollTo(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </>
           )}
         </div>

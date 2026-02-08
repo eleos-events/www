@@ -59,9 +59,7 @@ export function NewsletterSignup() {
       }
 
       setSubscribed(true);
-      setTimeout(() => {
-        setAlreadySubscribed(true);
-      }, 3000);
+      setAlreadySubscribed(true);
     } catch {
       setError("Network error. Please check your connection and try again.");
     } finally {
@@ -73,10 +71,14 @@ export function NewsletterSignup() {
     return (
       <section
         id="newsletter"
-        className="py-24 bg-gradient-to-b from-black to-[#0a0a0a]"
+        className="relative py-24 bg-black overflow-hidden"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center bg-[#0a0a0a] border border-[#333333] rounded-2xl p-8 md:p-16 shadow-2xl shadow-cyan-950/20 flex items-center justify-center min-h-[280px]">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.04] blur-[150px]" />
+          <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.03] blur-[150px]" />
+        </div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-16 flex items-center justify-center min-h-[280px]">
             <Loader2 className="h-8 w-8 animate-spin text-teal-400" />
           </div>
         </div>
@@ -88,15 +90,19 @@ export function NewsletterSignup() {
     return (
       <section
         id="newsletter"
-        className="py-24 bg-gradient-to-b from-black to-[#0a0a0a]"
+        className="relative py-24 bg-black overflow-hidden"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center bg-[#0a0a0a] border border-[#333333] rounded-2xl p-8 md:p-16 shadow-2xl shadow-cyan-950/20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.04] blur-[150px]" />
+          <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.03] blur-[150px]" />
+        </div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-16">
             <div className="flex flex-col items-center gap-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-500/10 ring-1 ring-teal-500/30">
                 <ThumbsUp className="h-8 w-8 text-teal-400" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-wide">
+              <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
                 You&apos;re on the list
               </h2>
               <p className="text-lg text-[#a0a0a0] max-w-md">
@@ -113,11 +119,20 @@ export function NewsletterSignup() {
   return (
     <section
       id="newsletter"
-      className="py-24 bg-gradient-to-b from-black to-[#0a0a0a]"
+      className="relative py-24 bg-black overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center bg-[#0a0a0a] border border-[#333333] rounded-2xl p-8 md:p-16 shadow-2xl shadow-cyan-950/20">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase mb-6 tracking-wide">
+      {/* Ambient background blobs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.04] blur-[150px]" />
+        <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.03] blur-[150px]" />
+      </div>
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-16">
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
+            Stay in the loop
+          </p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
             Never miss an event
           </h2>
           <p className="text-lg text-[#a0a0a0] mb-8">
