@@ -34,7 +34,7 @@ export function WelcomeEmail({ name, email, baseUrl }: WelcomeEmailProps) {
         <Container style={container}>
           {/* Header */}
           <Section style={header}>
-            <Text style={logoText}>ele&#xEB;s</Text>
+            <Text style={logoText}>el&#xEB;os</Text>
             <Text style={logoSubText}>events</Text>
           </Section>
 
@@ -94,7 +94,7 @@ export function WelcomeEmail({ name, email, baseUrl }: WelcomeEmailProps) {
 
           {/* Footer */}
           <Section style={footer} role="contentinfo">
-            <Text style={footerBrand}>ele&#xEB;s events</Text>
+            <Text style={footerBrand}>el&#xEB;os events</Text>
             <Text style={footerText}>
               Bespoke live music events in Boston.
             </Text>
