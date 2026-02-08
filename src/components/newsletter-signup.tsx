@@ -72,13 +72,9 @@ export function NewsletterSignup() {
     return (
       <section
         id="newsletter"
-        className="relative py-24 bg-black overflow-hidden"
+        className="relative py-24"
       >
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.04] blur-[150px]" />
-          <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.03] blur-[150px]" />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-16 flex items-center justify-center min-h-[280px]">
             <Loader2 className="h-8 w-8 animate-spin text-teal-400" />
           </div>
@@ -91,13 +87,9 @@ export function NewsletterSignup() {
     return (
       <section
         id="newsletter"
-        className="relative py-24 bg-black overflow-hidden"
+        className="relative py-24"
       >
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.04] blur-[150px]" />
-          <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.03] blur-[150px]" />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-16">
             <div className="flex flex-col items-center gap-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-500/10 ring-1 ring-teal-500/30">
@@ -119,15 +111,9 @@ export function NewsletterSignup() {
   return (
     <section
       id="newsletter"
-      className="relative py-24 bg-black overflow-hidden"
+      className="relative py-24"
     >
-      {/* Ambient background blobs */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.04] blur-[150px]" />
-        <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.03] blur-[150px]" />
-      </div>
-
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-16">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
             {copy.newsletter.eyebrow}

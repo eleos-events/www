@@ -11,16 +11,22 @@ const hasUpcomingEvents = config.events.some((event) =>
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="relative min-h-screen bg-black overflow-hidden">
+      {/* Page-level ambient blobs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
+        <div className="absolute -right-40 top-[10%] h-[500px] w-[500px] rounded-full bg-cyan-500/[0.05] blur-[150px]" />
+        <div className="absolute left-1/3 top-[30%] h-[400px] w-[400px] rounded-full bg-pink-500/[0.03] blur-[150px]" />
+        <div className="absolute -left-40 top-[50%] h-[500px] w-[500px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
+        <div className="absolute -right-40 top-[60%] h-[400px] w-[400px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
+        <div className="absolute left-1/2 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.03] blur-[150px]" />
+      </div>
+
       {hasUpcomingEvents ? (
         <>
           {/* Page header */}
-          <section className="relative overflow-hidden bg-black pt-16 pb-8">
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.04] blur-[150px]" />
-              <div className="absolute -right-40 top-10 h-[400px] w-[400px] rounded-full bg-purple-600/[0.03] blur-[150px]" />
-            </div>
-            <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="relative pt-16 pb-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff] animate-fade-in-up">
                 {copy.events.hero.eyebrow}
               </p>
@@ -38,13 +44,8 @@ export default function EventsPage() {
         </>
       ) : (
         /* Combined hero when no upcoming events — compact and atmospheric */
-        <section className="relative overflow-hidden bg-black pt-16 pb-16">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
-            <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.05] blur-[150px]" />
-            <div className="absolute left-1/3 bottom-0 h-[400px] w-[400px] rounded-full bg-pink-500/[0.03] blur-[150px]" />
-          </div>
-          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative pt-16 pb-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff] animate-fade-in-up">
               {copy.events.hero.eyebrow}
             </p>

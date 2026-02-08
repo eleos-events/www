@@ -116,14 +116,8 @@ export function EventList({
 
   if (filteredEvents.length === 0) {
     return (
-      <section className="relative py-24 bg-black overflow-hidden">
-        {/* Ambient background blobs */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
-          <div className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
-        </div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={cn(titleAlignment === "center" && "text-center")}>
             <p
               className={cn(
@@ -156,15 +150,8 @@ export function EventList({
   }
 
   return (
-    <section className="relative py-24 bg-black overflow-hidden">
-      {/* Ambient background blobs */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
-        <div className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
-        <div className="absolute left-1/2 bottom-0 h-[400px] w-[400px] rounded-full bg-pink-500/[0.03] blur-[150px]" />
-      </div>
-
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className={cn(titleAlignment === "center" && "text-center")}>
           <p
             className={cn(

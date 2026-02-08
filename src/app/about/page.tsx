@@ -17,14 +17,22 @@ const differentiatorGradients = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="relative min-h-screen bg-black overflow-hidden">
+      {/* Page-level ambient blobs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
+        <div className="absolute -right-40 top-[15%] h-[500px] w-[500px] rounded-full bg-cyan-500/[0.05] blur-[150px]" />
+        <div className="absolute -right-40 top-[35%] h-[500px] w-[500px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
+        <div className="absolute -left-40 top-[45%] h-[400px] w-[400px] rounded-full bg-pink-500/[0.03] blur-[150px]" />
+        <div className="absolute -left-40 top-[60%] h-[500px] w-[500px] rounded-full bg-purple-600/[0.03] blur-[150px]" />
+        <div className="absolute -right-40 top-[70%] h-[400px] w-[400px] rounded-full bg-cyan-500/[0.04] blur-[150px]" />
+        <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-pink-500/[0.04] blur-[150px]" />
+        <div className="absolute -left-40 bottom-[10%] h-[400px] w-[400px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
+      </div>
+
       {/* Hero header */}
-      <section className="relative overflow-hidden bg-black pt-16 pb-16">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
-          <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.05] blur-[150px]" />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative pt-16 pb-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff] animate-fade-in-up">
             {copy.about.hero.eyebrow}
           </p>
@@ -38,12 +46,8 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy */}
-      <section className="relative overflow-hidden bg-black py-24">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
-          <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-pink-500/[0.03] blur-[150px]" />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
               {copy.about.philosophy.eyebrow}
@@ -63,12 +67,8 @@ export default function AboutPage() {
       </section>
 
       {/* Pillars */}
-      <section className="relative overflow-hidden bg-black py-24">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-40 top-20 h-[500px] w-[500px] rounded-full bg-purple-600/[0.03] blur-[150px]" />
-          <div className="absolute -right-40 top-60 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.04] blur-[150px]" />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
               {copy.about.pillars.eyebrow}
@@ -110,12 +110,8 @@ export default function AboutPage() {
       </section>
 
       {/* What Makes Us Different */}
-      <section className="relative overflow-hidden bg-black py-24">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -right-40 top-0 h-[500px] w-[500px] rounded-full bg-pink-500/[0.04] blur-[150px]" />
-          <div className="absolute -left-40 top-40 h-[400px] w-[400px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
               {copy.about.differentiators.eyebrow}

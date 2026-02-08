@@ -103,13 +103,17 @@ export function MarkdownPage({ source }: { source: string }) {
   const tokens = parseMarkdown(source);
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="relative overflow-hidden bg-black pt-16 pb-24">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
-          <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.05] blur-[150px]" />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative min-h-screen bg-black overflow-hidden">
+      {/* Page-level ambient blobs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
+        <div className="absolute -right-40 top-[20%] h-[500px] w-[500px] rounded-full bg-cyan-500/[0.05] blur-[150px]" />
+        <div className="absolute -left-40 top-[50%] h-[400px] w-[400px] rounded-full bg-teal-500/[0.03] blur-[150px]" />
+        <div className="absolute -right-40 bottom-[10%] h-[400px] w-[400px] rounded-full bg-pink-500/[0.03] blur-[150px]" />
+      </div>
+
+      <section className="relative pt-16 pb-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl space-y-6">
             {tokens.map((token, i) => {
               switch (token.type) {

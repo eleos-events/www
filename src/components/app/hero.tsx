@@ -19,10 +19,10 @@ export function Hero({
   const isLeft = titleAlignment === "left";
 
   return (
-    <section className="relative h-[calc(100vh-4rem)] flex items-center overflow-hidden">
+    <section className="relative h-[calc(100vh-4rem)] flex items-center">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/splash.jpg')] bg-cover bg-center bg-no-repeat" />
-        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/30 to-black" />
       </div>
 
       {/* Ambient blobs over the image */}
@@ -30,6 +30,9 @@ export function Hero({
         <div className="absolute -left-40 bottom-20 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.05] blur-[150px]" />
         <div className="absolute right-0 top-1/4 h-[400px] w-[400px] rounded-full bg-purple-600/[0.04] blur-[150px]" />
       </div>
+
+      {/* Glassmorphic fade at bottom edge */}
+      <div className="absolute bottom-0 left-0 right-0 z-[2] h-32 bg-gradient-to-b from-transparent to-black/60 backdrop-blur-sm [mask-image:linear-gradient(to_bottom,transparent,black)]" />
 
       <div
         className={cn(
