@@ -1,46 +1,41 @@
-import { getContactByEmail, getContactById } from "@/server/mailing-list";
+import { getContactByEmail, getContactById, setContactUnsubscribed } from "@/server/mailing-list";
 import { badRequest, internalServerError, ok } from "@/server/results";
 import { NextRequest } from "next/server";
-import { Contact, Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { Contact } from "resend";
 
 export async function GET(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get("id");
     const email = request.nextUrl.searchParams.get("email");
 
+    console.log("Unsubscribe request:", { id, email });
+
     if (!id && !email) {
+      console.warn("Unsubscribe: missing id and email params");
       return badRequest("Missing id or email.");
     }
 
     let contact: Contact | null = null;
     if (id) {
+      console.log("Unsubscribe: looking up contact by id:", id);
       contact = await getContactById(id);
     } else if (email) {
+      console.log("Unsubscribe: looking up contact by email:", email);
       contact = await getContactByEmail(email);
     }
 
     if (!contact) {
-      // We dont want to show that the user was on the list, but not found
-      console.warn("Unsubscribe Failure: Contact not found by id:", id);
+      console.warn("Unsubscribe: contact not found", { id, email });
       return ok();
     }
 
-    const { error: updateError } = await resend.contacts.update({
-      id: contact.id,
-      audienceId: process.env.RESEND_AUDIENCE_ID!,
-      unsubscribed: true,
-    });
+    console.log("Unsubscribe: updating contact:", contact.id, contact.email);
+    await setContactUnsubscribed(contact.id, true);
 
-    if (updateError) {
-      return internalServerError(
-        "Failed to unsubscribe: " + updateError.message,
-      );
-    }
-
+    console.log("Unsubscribe: success for contact:", contact.id);
     return ok();
   } catch (error) {
+    console.error("Unsubscribe: unexpected error:", error);
     return internalServerError("An unexpected error occurred: " + error);
   }
 }

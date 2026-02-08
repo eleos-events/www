@@ -8,7 +8,7 @@ import {
 import {
   createContact,
   getContactByEmail,
-  resend,
+  setContactUnsubscribed,
   sendWelcomeEmail,
 } from "@/server/mailing-list";
 
@@ -43,11 +43,7 @@ export async function POST(request: NextRequest) {
 
     if (contact.unsubscribed) {
       console.log("Contact is unsubscribed, updating contact");
-      await resend.contacts.update({
-        id: contact.id,
-        audienceId: audienceId,
-        unsubscribed: false,
-      });
+      await setContactUnsubscribed(contact.id, false);
     }
 
     return ok();
