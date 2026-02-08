@@ -1,49 +1,47 @@
 import { EventProps } from "@/components/app/event-list";
 import { HeroProps } from "@/components/app/hero";
+import { copy } from "@/lib/copy";
 import dayjs from "dayjs";
 import { Metadata } from "next";
 import { Keyed } from "./utils";
 
 export const config = {
   seo: {
-    title: "elëos events",
-    description:
-      "Boston-based bespoke events company producing one-off live-music parties that showcase local talent. High-quality, highly produced experiences at relatively low cost.",
-    metadataBase: new URL("https://eleos.events"),
+    title: copy.brand.name,
+    description: copy.brand.tagline,
+    metadataBase: new URL(copy.brand.url),
     openGraph: {
       type: "website",
       locale: "en_US",
-      siteName: "elëos events",
-      title: "elëos events",
-      description:
-        "Boston-based bespoke events company producing one-off live-music parties that showcase local talent. High-quality, highly produced experiences at relatively low cost.",
-      url: "https://eleos.events",
+      siteName: copy.brand.name,
+      title: copy.brand.name,
+      description: copy.brand.tagline,
+      url: copy.brand.url,
       images: [
         {
           url: "/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: "elëos events — Bespoke Live Music Events in Boston",
+          alt: `${copy.brand.name} — Bespoke Live Music Events in Boston`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "elëos events",
-      description:
-        "Boston-based bespoke events company producing one-off live-music parties that showcase local talent.",
+      title: copy.brand.name,
+      description: copy.brand.tagline,
       images: ["/twitter-image.jpg"],
     },
   } satisfies Metadata,
   hero: {
-    title: "Join our next event",
+    title: copy.home.hero.title,
     titleAlignment: "left",
-    meta: "Boston-based bespoke events company producing high-quality, highly produced experiences that showcase local talent.",
+    meta: copy.home.hero.description,
     actions: [
       {
         type: "link",
-        href: "/events",
-        label: "View Events",
+        href: copy.home.hero.cta.href,
+        label: copy.home.hero.cta.label,
         key: "view-events",
       },
     ],

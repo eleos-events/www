@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { copy } from "@/lib/copy";
 
 export type EmptyProps = {
   title?: string;
@@ -78,7 +79,7 @@ export function Empty({ title, description, notifyHref }: EmptyProps) {
           href={notifyHref}
           className="inline-flex items-center text-[#00d4ff] font-medium hover:underline"
         >
-          Notify Me When Live
+          {copy.eventList.empty.notifyLabel}
           <ArrowRight className="ml-2 h-4 w-4" />
         </a>
       )}

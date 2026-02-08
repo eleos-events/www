@@ -1,51 +1,18 @@
 import { Palette, Music, Ticket, Sparkles, Heart, Radio } from "lucide-react";
+import { copy } from "@/lib/copy";
 
-const pillars = [
-  {
-    title: "Bespoke Design",
-    description:
-      "Every event is uniquely designed with custom visuals and production that match the theme and atmosphere.",
-    icon: Palette,
-    gradient: "from-pink-500 to-purple-600",
-  },
-  {
-    title: "Local Talent",
-    description:
-      "We showcase the best local DJs and performers, giving them a platform to shine on a world-class stage.",
-    icon: Music,
-    gradient: "from-cyan-400 to-blue-500",
-  },
-  {
-    title: "Accessible Pricing",
-    description:
-      "Premium experiences at accessible prices. We believe everyone deserves access to high-quality events.",
-    icon: Ticket,
-    gradient: "from-teal-400 to-emerald-500",
-  },
+const pillarIcons = [Palette, Music, Ticket];
+const pillarGradients = [
+  "from-pink-500 to-purple-600",
+  "from-cyan-400 to-blue-500",
+  "from-teal-400 to-emerald-500",
 ];
 
-const differentiators = [
-  {
-    title: "Immersive Experiences",
-    description:
-      "Our events are designed to be fully immersive. From the moment you enter, you're transported into a world of music, light, and energy.",
-    icon: Sparkles,
-    gradient: "from-cyan-400 to-blue-500",
-  },
-  {
-    title: "Connection Through Dance",
-    description:
-      "We believe in the power of dance to bring people together. Our events create spaces where connections are forged on the dance floor.",
-    icon: Heart,
-    gradient: "from-pink-500 to-rose-600",
-  },
-  {
-    title: "Pioneering Music",
-    description:
-      "We're always pushing boundaries, showcasing new sounds and supporting artists who are shaping the future of electronic music.",
-    icon: Radio,
-    gradient: "from-orange-400 to-orange-600",
-  },
+const differentiatorIcons = [Sparkles, Heart, Radio];
+const differentiatorGradients = [
+  "from-cyan-400 to-blue-500",
+  "from-pink-500 to-rose-600",
+  "from-orange-400 to-orange-600",
 ];
 
 export default function AboutPage() {
@@ -59,14 +26,13 @@ export default function AboutPage() {
         </div>
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff] animate-fade-in-up">
-            Who we are
+            {copy.about.hero.eyebrow}
           </p>
           <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent mb-6 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-            About Us
+            {copy.about.hero.title}
           </h1>
           <p className="text-lg md:text-xl text-[#a0a0a0] max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-            Boston-based bespoke events company producing one-off live-music
-            parties that showcase local talent.
+            {copy.about.hero.description}
           </p>
         </div>
       </section>
@@ -80,26 +46,17 @@ export default function AboutPage() {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
-              Our philosophy
+              {copy.about.philosophy.eyebrow}
             </p>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent mb-10">
-              Every night should be
-              <br />a bespoke experience
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent mb-10 whitespace-pre-line">
+              {copy.about.philosophy.title}
             </h2>
             <div className="space-y-6">
-              <p className="text-lg text-[#a0a0a0]">
-                Each event has a customised design and unique visual production.
-                We believe that every night should be a bespoke experience, with
-                different visual production and immersive environments that
-                connect people through dance and music.
-              </p>
-              <p className="text-lg text-[#a0a0a0]">
-                We pioneer the local music scene by providing a platform for
-                emerging artists while maintaining the production quality of
-                world-class venues. Our multi-room experiences and bespoke visual
-                production create unforgettable moments that bring communities
-                together.
-              </p>
+              {copy.about.philosophy.paragraphs.map((paragraph, i) => (
+                <p key={i} className="text-lg text-[#a0a0a0]">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>
@@ -114,15 +71,16 @@ export default function AboutPage() {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
-              What we deliver
+              {copy.about.pillars.eyebrow}
             </p>
             <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-              Built on three pillars
+              {copy.about.pillars.title}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {pillars.map((pillar, index) => {
-              const Icon = pillar.icon;
+            {copy.about.pillars.items.map((pillar, index) => {
+              const Icon = pillarIcons[index];
+              const gradient = pillarGradients[index];
               return (
                 <div
                   key={pillar.title}
@@ -131,11 +89,11 @@ export default function AboutPage() {
                 >
                   {/* Gradient glow on hover */}
                   <div
-                    className={`absolute -inset-px rounded-2xl bg-gradient-to-r ${pillar.gradient} opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20`}
+                    className={`absolute -inset-px rounded-2xl bg-gradient-to-r ${gradient} opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20`}
                   />
                   <div className="relative">
                     <div
-                      className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
+                      className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
                     >
                       <Icon className="h-7 w-7 text-white" />
                     </div>
@@ -160,15 +118,16 @@ export default function AboutPage() {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
-              The difference
+              {copy.about.differentiators.eyebrow}
             </p>
             <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-              What makes us different
+              {copy.about.differentiators.title}
             </h2>
           </div>
           <div className="max-w-3xl mx-auto space-y-4">
-            {differentiators.map((item, index) => {
-              const Icon = item.icon;
+            {copy.about.differentiators.items.map((item, index) => {
+              const Icon = differentiatorIcons[index];
+              const gradient = differentiatorGradients[index];
               return (
                 <div
                   key={item.title}
@@ -176,10 +135,10 @@ export default function AboutPage() {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div
-                    className={`absolute -inset-px rounded-2xl bg-gradient-to-r ${item.gradient} opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20`}
+                    className={`absolute -inset-px rounded-2xl bg-gradient-to-r ${gradient} opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20`}
                   />
                   <div
-                    className={`relative mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
+                    className={`relative mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} shadow-lg transition-transform duration-300 backface-hidden group-hover:scale-110 group-hover:rotate-3`}
                   >
                     <Icon className="h-6 w-6 text-white" />
                   </div>

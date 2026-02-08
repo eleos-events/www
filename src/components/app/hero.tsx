@@ -1,6 +1,7 @@
 import { cn, Keyed } from "@/lib/utils";
 import { ScrollCue } from "../ui/scroll-cue";
 import { Action, ActionProps } from "./generic-action";
+import { copy } from "@/lib/copy";
 
 export type HeroProps = {
   title: string;
@@ -43,7 +44,7 @@ export function Hero({
               isLeft ? "text-left" : "text-center"
             )}
           >
-            Live music experiences
+            {copy.home.hero.eyebrow}
           </p>
           <h1
             className={cn(

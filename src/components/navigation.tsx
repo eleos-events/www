@@ -5,16 +5,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
-
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/events", label: "Events" },
-  { href: "/about", label: "About" },
-  // { href: "/artists", label: "Artists" },
-  { href: "/gallery", label: "Gallery" },
-  // { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
-];
+import { copy } from "@/lib/copy";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,7 +20,7 @@ export function Navigation() {
             </Link>
 
             <div className="hidden md:flex md:items-center md:space-x-6">
-              {navItems.slice(1).map((item) => (
+              {copy.nav.items.slice(1).map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -42,7 +33,7 @@ export function Navigation() {
 
             <div className="hidden md:block">
               <Button asChild>
-                <Link href="/contact">Get Tickets</Link>
+                <Link href={copy.nav.cta.href}>{copy.nav.cta.label}</Link>
               </Button>
             </div>
 
@@ -87,7 +78,7 @@ export function Navigation() {
 
           <div className="relative flex h-full flex-col px-6 pt-24">
             <nav className="space-y-2">
-              {navItems.map((item, index) => (
+              {copy.nav.items.map((item, index) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -106,23 +97,23 @@ export function Navigation() {
 
             <div
               className="mt-10 animate-fade-in-up"
-              style={{ animationDelay: `${navItems.length * 60 + 60}ms` }}
+              style={{ animationDelay: `${copy.nav.items.length * 60 + 60}ms` }}
             >
               <Button asChild size="lg" className="w-full">
                 <Link
-                  href="/contact"
+                  href={copy.nav.cta.href}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Get Tickets
+                  {copy.nav.cta.label}
                 </Link>
               </Button>
             </div>
 
             <p
               className="mt-auto pb-12 text-center text-xs uppercase tracking-[0.2em] text-[#555] animate-fade-in-up"
-              style={{ animationDelay: `${navItems.length * 60 + 120}ms` }}
+              style={{ animationDelay: `${copy.nav.items.length * 60 + 120}ms` }}
             >
-              elëos events
+              {copy.brand.name}
             </p>
           </div>
         </div>

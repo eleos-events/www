@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, ThumbsUp } from "lucide-react";
+import { copy } from "@/lib/copy";
 
 const STORAGE_KEY = "newsletter-subscribed";
 
@@ -48,7 +49,7 @@ export function NewsletterSignup() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        setError(data.error || "Something went wrong. Please try again.");
+        setError(data.error || copy.newsletter.errors.generic);
         return;
       }
 
@@ -61,7 +62,7 @@ export function NewsletterSignup() {
       setSubscribed(true);
       setAlreadySubscribed(true);
     } catch {
-      setError("Network error. Please check your connection and try again.");
+      setError(copy.newsletter.errors.network);
     } finally {
       setIsLoading(false);
     }
@@ -103,11 +104,10 @@ export function NewsletterSignup() {
                 <ThumbsUp className="h-8 w-8 text-teal-400" />
               </div>
               <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-                You&apos;re on the list
+                {copy.newsletter.success.title}
               </h2>
               <p className="text-lg text-[#a0a0a0] max-w-md">
-                We&apos;ll let you know when something big is coming.
-                See you on the dance floor.
+                {copy.newsletter.success.description}
               </p>
             </div>
           </div>
@@ -130,25 +130,24 @@ export function NewsletterSignup() {
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-16">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">
-            Stay in the loop
+            {copy.newsletter.eyebrow}
           </p>
           <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-            Never miss an event
+            {copy.newsletter.title}
           </h2>
           <p className="text-lg text-[#a0a0a0] mb-8">
-            Sign up for announcements and presales. Be the first to know about
-            our next party.
+            {copy.newsletter.description}
           </p>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <Label htmlFor="name" className="sr-only">
-                  Name
+                  {copy.newsletter.form.namePlaceholder}
                 </Label>
                 <Input
                   id="name"
                   type="text"
-                  placeholder="Name"
+                  placeholder={copy.newsletter.form.namePlaceholder}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -157,12 +156,12 @@ export function NewsletterSignup() {
               </div>
               <div>
                 <Label htmlFor="email" className="sr-only">
-                  Email
+                  {copy.newsletter.form.emailPlaceholder}
                 </Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Email"
+                  placeholder={copy.newsletter.form.emailPlaceholder}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -171,12 +170,12 @@ export function NewsletterSignup() {
               </div>
               <div>
                 <Label htmlFor="phone" className="sr-only">
-                  Phone (Optional)
+                  {copy.newsletter.form.phonePlaceholder}
                 </Label>
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="Phone (Optional)"
+                  placeholder={copy.newsletter.form.phonePlaceholder}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   disabled={isLoading || subscribed}
@@ -194,7 +193,7 @@ export function NewsletterSignup() {
                 htmlFor="consent"
                 className="text-sm text-[#a0a0a0] cursor-pointer"
               >
-                I consent to receive updates and marketing communications
+                {copy.newsletter.form.consentLabel}
               </Label>
             </div>
             {error && (
@@ -209,12 +208,12 @@ export function NewsletterSignup() {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing up...
+                  {copy.newsletter.form.submittingLabel}
                 </>
               ) : subscribed ? (
-                "Subscribed!"
+                copy.newsletter.form.submittedLabel
               ) : (
-                "Sign Up"
+                copy.newsletter.form.submitLabel
               )}
             </Button>
           </form>
