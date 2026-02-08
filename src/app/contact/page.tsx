@@ -40,11 +40,10 @@ const socials: Social[] = [
   {
     name: "SoundCloud",
     handle: "Mixes & Sets",
-    href: "/soundcloud-mixes",
+    href: "https://on.soundcloud.com/7Uzed1qsUASOLBeIg9",
     icon: SoundCloudIcon,
     gradient: "from-orange-400 to-orange-600",
     ring: "group-hover:ring-orange-500/30",
-    internal: true,
   },
 ];
 
