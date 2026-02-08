@@ -20,7 +20,7 @@ export const config = {
       url: "https://eleos.events",
       images: [
         {
-          url: "/splash.png",
+          url: "/og-image.jpg",
           width: 1200,
           height: 630,
           alt: "elëos events — Bespoke Live Music Events in Boston",
@@ -32,7 +32,7 @@ export const config = {
       title: "elëos events",
       description:
         "Boston-based bespoke events company producing one-off live-music parties that showcase local talent.",
-      images: ["/splash.png"],
+      images: ["/twitter-image.jpg"],
     },
   } satisfies Metadata,
   hero: {
