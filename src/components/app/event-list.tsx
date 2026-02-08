@@ -97,11 +97,11 @@ export function EventList({
 
   if (filteredEvents.length === 0) {
     return (
-      <section className="py-24 bg-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-[#0a0a0a]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2
             className={cn(
-              "text-4xl md:text-5xl font-black uppercase mb-12",
+              "text-4xl md:text-5xl font-bold uppercase mb-12 tracking-wide",
               titleAlignment === "left" && "text-left",
               titleAlignment === "center" && "text-center"
             )}
@@ -109,8 +109,9 @@ export function EventList({
             {title}
           </h2>
           <Empty
-            title="No events found"
-            description="Check back soon for upcoming events"
+            title="More magic on the way"
+            description="Our curators are finalizing the next set of one-off experiences. Join the newsletter to be the first to know."
+            notifyHref="#newsletter"
           />
         </div>
       </section>
@@ -118,11 +119,11 @@ export function EventList({
   }
 
   return (
-    <section className="py-24 bg-black">
+    <section className="py-24 bg-[#0a0a0a]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2
           className={cn(
-            "text-4xl md:text-5xl font-black uppercase mb-12",
+            "text-4xl md:text-5xl font-bold uppercase mb-12 tracking-wide",
             titleAlignment === "left" && "text-left",
             titleAlignment === "center" && "text-center"
           )}

@@ -18,6 +18,7 @@ export const config = {
   } satisfies Metadata,
   hero: {
     title: "Join our next event",
+    titleAlignment: "left",
     meta: "Boston-based bespoke events company producing high-quality, highly produced experiences that showcase local talent.",
     actions: [
       {
