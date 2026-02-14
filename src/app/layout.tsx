@@ -23,6 +23,7 @@ const inter = Inter({
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { config } from "@/lib/config";
+import { Providers } from "./providers";
 
 export const metadata = config.seo;
 
@@ -37,9 +38,11 @@ export default function RootLayout({
       <body
         className={`${archivoBlack.variable} ${inter.variable} antialiased bg-black text-white`}
       >
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+        <Providers>
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
