@@ -66,7 +66,7 @@ export function Footer() {
     <footer className="border-t border-white/[0.06] bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Newsletter signup */}
-        <div className="mb-10 text-center">
+        <div id="newsletter" className="mb-10 text-center">
           {alreadySubscribed ? (
             <div className="flex items-center justify-center gap-2 text-sm text-[#a0a0a0]">
               <Check className="h-4 w-4 text-teal-400" />
