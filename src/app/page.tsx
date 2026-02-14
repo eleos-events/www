@@ -1,4 +1,3 @@
-import { NewsletterSignup } from "@/components/newsletter-signup";
 import { Hero } from "@/components/app/hero";
 import { EventList } from "@/components/app/event-list";
 import { config } from "@/lib/config";
@@ -18,7 +17,6 @@ export default function Home() {
 
       <Hero {...config.hero} />
       <EventList showViewAllEvents={true} title={copy.home.events.title} />
-      <NewsletterSignup />
     </div>
   );
 }

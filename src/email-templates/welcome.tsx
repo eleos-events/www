@@ -13,7 +13,7 @@ import {
 } from "@react-email/components";
 
 interface WelcomeEmailProps {
-  name: string;
+  name: string | null;
   contactId: string;
   baseUrl: string;
 }
@@ -43,7 +43,7 @@ export function WelcomeEmail({ name, contactId, baseUrl }: WelcomeEmailProps) {
           {/* Hero */}
           <Section style={heroSection}>
             <Heading as="h1" style={heroHeading}>
-              You&apos;re in, {name}.
+              You&apos;re in{name ? `, ${name}` : ""}.
             </Heading>
             <Text style={heroSubtext}>
               Welcome to the inner circle. You&apos;ll be the first to hear
