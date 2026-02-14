@@ -107,7 +107,7 @@ const FROM_EMAIL = "elëos events <noreply@eleos.events>";
 
 export async function sendWelcomeEmail(baseUrl: string, contact: Contact) {
   const html = await render(
-    WelcomeEmail({ name: contact.first_name!, contactId: contact.id, baseUrl }),
+    WelcomeEmail({ name: contact.first_name || null, contactId: contact.id, baseUrl }),
   );
   const unsubscribeUrl = getUnsubscribeUrl(baseUrl, contact.id);
   return withRetry("sendWelcomeEmail", async () => {

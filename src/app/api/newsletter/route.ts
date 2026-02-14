@@ -17,12 +17,8 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { email, name } = body;
 
-    if (!email || !name) {
-      return badRequest("Email and name are required.");
-    }
-
-    if (body.consent !== true) {
-      return badRequest("Consent is required.");
+    if (!email) {
+      return badRequest("Email is required.");
     }
 
     const audienceId = process.env.RESEND_AUDIENCE_ID;
@@ -35,7 +31,7 @@ export async function POST(request: NextRequest) {
 
     if (!contact) {
       console.log("Contact not found, creating contact");
-      contact = await createContact(email, name, audienceId);
+      contact = await createContact(email, name || "", audienceId);
 
       console.log("Sending welcome email to contact:", contact.email);
       await sendWelcomeEmail(request.nextUrl.origin, contact);
