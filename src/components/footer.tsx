@@ -79,20 +79,21 @@ export function Footer() {
               </p>
               <form
                 onSubmit={handleSubmit}
-                className="mx-auto flex max-w-md gap-3"
+                className="mx-auto flex max-w-sm items-center rounded-full border border-white/[0.08] bg-white/[0.03] p-1.5 focus-within:border-white/[0.15] transition-colors duration-300"
               >
-                <Input
+                <input
                   type="email"
                   placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={isLoading || subscribed}
-                  className="flex-1"
+                  className="flex-1 bg-transparent px-4 text-sm text-white placeholder:text-[#555] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                 />
                 <Button
                   type="submit"
                   disabled={isLoading || subscribed || !email}
+                  size="sm"
                   className="shrink-0"
                 >
                   {isLoading ? (
