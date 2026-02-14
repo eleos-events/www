@@ -24,10 +24,10 @@ export type EventProps = {
   imageUrl: string;
   date: Dayjs;
   location: string;
-  action: ActionProps;
+  ticketUrl: string;
 };
 
-export function Event({ title, imageUrl, date, location, action }: EventProps) {
+export function Event({ title, imageUrl, date, location, action }: EventProps & { action: ActionProps }) {
   return (
     <Card className="overflow-hidden hover:border-white/[0.12] hover:bg-white/[0.04] hover:shadow-lg hover:shadow-[#00d4ff]/10 group">
       <div className="relative aspect-[3/4] bg-black overflow-hidden">
@@ -174,15 +174,21 @@ export function EventList({
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-6">
-              {filteredEvents.map(({ key, ...event }, index) => (
-                <div
-                  key={key}
-                  className="flex-[0_0_100%] md:flex-[0_0_calc(50%-0.75rem)] lg:flex-[0_0_calc(33.333%-1rem)] min-w-0 animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <Event {...event} />
-                </div>
-              ))}
+              {filteredEvents.map(({ key, ...event }, index) => {
+                const isPast = event.date.isBefore(dayjs().startOf("day"));
+                const action: ActionProps = isPast
+                  ? { type: "link", href: `/gallery?event=${encodeURIComponent(event.title)}`, label: "See Photos" }
+                  : { type: "link", href: event.ticketUrl, label: "Get Tickets" };
+                return (
+                  <div
+                    key={key}
+                    className="flex-[0_0_100%] md:flex-[0_0_calc(50%-0.75rem)] lg:flex-[0_0_calc(33.333%-1rem)] min-w-0 animate-fade-in-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <Event {...event} action={action} />
+                  </div>
+                );
+              })}
             </div>
           </div>
           {filteredEvents.length > 1 && (
