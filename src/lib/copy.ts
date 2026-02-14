@@ -176,7 +176,7 @@ export const copy: SiteCopy = {
       { href: "/gallery", label: "Gallery" },
       { href: "/contact", label: "Contact" },
     ],
-    cta: { href: "/contact", label: "Get Tickets" },
+    cta: { href: "/events", label: "Get Tickets" },
   },
 
   home: {
