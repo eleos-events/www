@@ -1,14 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { copy } from "@/lib/copy";
 import { galleryImages } from "@/lib/gallery-data";
 
 const events = ["All", ...Array.from(new Set(galleryImages.map((img) => img.event)))];
 
-export default function GalleryPage() {
-  const [selectedEvent, setSelectedEvent] = useState("All");
+function GalleryContent() {
+  const searchParams = useSearchParams();
+  const eventParam = searchParams.get("event");
+  const initialEvent = eventParam && events.includes(eventParam) ? eventParam : "All";
+  const [selectedEvent, setSelectedEvent] = useState(initialEvent);
 
   const filteredImages =
     selectedEvent === "All"
@@ -88,5 +92,13 @@ export default function GalleryPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function GalleryPage() {
+  return (
+    <Suspense>
+      <GalleryContent />
+    </Suspense>
   );
 }

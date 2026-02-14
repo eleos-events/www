@@ -53,11 +53,7 @@ export const config = {
       imageUrl: "/images/event-posters/groove-garden.png",
       date: dayjs("2024-08-02"),
       location: "Cambridge, MA",
-      action: {
-        type: "link",
-        href: "https://posh.vip/e/groove-garden-5",
-        label: "View Event",
-      },
+      ticketUrl: "https://posh.vip/e/groove-garden-5",
     },
     {
       key: "haunted-house",
@@ -65,11 +61,7 @@ export const config = {
       imageUrl: "/images/event-posters/haunted-house.png",
       date: dayjs("2025-11-01"),
       location: "Cambridge, MA",
-      action: {
-        type: "link",
-        href: "https://posh.vip/e/haunted-house-8",
-        label: "View Event",
-      },
+      ticketUrl: "https://posh.vip/e/haunted-house-8",
     },
   ] satisfies Keyed<EventProps>[],
 } as const;
