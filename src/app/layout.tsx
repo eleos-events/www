@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+
 import { Archivo_Black, Inter } from "next/font/google";
 import "@fontsource/aileron/400.css";
 import "@fontsource/aileron/700.css";
@@ -31,6 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <Analytics />
       <body
         className={`${archivoBlack.variable} ${inter.variable} antialiased bg-black text-white`}
       >
